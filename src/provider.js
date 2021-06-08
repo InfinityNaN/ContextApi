@@ -2,18 +2,21 @@ import React, {useState} from 'react'
 import PackageContext from "./context"
 
 
-const provider = (props) =>{
+const Provider = (props) =>{
    const[cricketer, setCricketer] = useState({
-       name = "Sachin",
-       highestScore = 200,
-       retired = "Retired"
+       name : "Sachin",
+       highestScore : 200,
+       retired : "Not Retired"
    })
    return(
        <PackageContext.Provider
         value = {{
            data: cricketer,
-           upsateHighScore: ()=>{
+           updateHighScore: ()=>{
             setCricketer({...cricketer, highestScore: 210}) 
+           },
+           updateRetirement: () => {
+            setCricketer({...cricketer, retired: "Sachin got retired"}) 
            }
         }}
        >
@@ -22,3 +25,5 @@ const provider = (props) =>{
        </PackageContext.Provider>
    )
 }
+
+export default Provider
